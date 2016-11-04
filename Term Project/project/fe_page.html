@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flow Element</title>
+</head>
+<body>
+	<h1 style="margin-left: 450px">Retrieve Flow Element Information</h1>
+	<hr>
+	<form action="fe_page.php" method="post">
+	
+	<h3> Select fields of output</h3>
+	Flow Element:<input type="text" name="feprimarykey" id="fekey"/><br><br>
+	All Times:
+	<input type="checkbox" name="alltimes" onchange="changeFields()"><br><br>
+	Start Date:
+	<input type="date" name="startdate" id="startdate">
+	Start Time:
+	<input type="time" name="starttime" id="starttime"><br><br>
+	Same Time:
+	<input type="checkbox" name="sametime" id = "sametime" onchange="sameFields()"><br><br> 
+	End Date:
+	<input type="date" name="enddate" id="enddate">
+	End Time:
+	<input type="time" name="endtime" id="endtime"><br><br>
+	
+	
+	<input type="submit">
+</form>
+	<script>
+		function changeFields() {
+		
+			if(document.getElementById("startdate").disabled == false){
+				document.getElementById("startdate").disabled = true;
+				document.getElementById("starttime").disabled = true;
+				document.getElementById("enddate").disabled = true;
+				document.getElementById("endtime").disabled = true;
+				document.getElementById("sametime").disabled = true;
+				if(document.getElementById("sametime").checked = true){
+					document.getElementById("sametime").checked = false;
+					}
+				document.getElementById("startdate").value = null;
+				document.getElementById("starttime").value = null;
+				document.getElementById("enddate").value = null;
+				document.getElementById("endtime").value = null;
+			}
+			else{
+				document.getElementById("startdate").disabled = false;
+				document.getElementById("starttime").disabled = false;
+				document.getElementById("enddate").disabled = false;
+				document.getElementById("endtime").disabled = false;
+				document.getElementById("sametime").disabled = false;
+			}
+			
+		}
+		function sameFields() {
+			if(document.getElementById("enddate").disabled == false){
+				document.getElementById("enddate").disabled = true;
+				document.getElementById("endtime").disabled = true;
+				document.getElementById("enddate").value = null;
+				document.getElementById("endtime").value = null;
+			}
+			else{
+				document.getElementById("enddate").disabled = false;
+				document.getElementById("endtime").disabled = false;
+			}
+		}
+	</script>
+
+</body>
+</html>

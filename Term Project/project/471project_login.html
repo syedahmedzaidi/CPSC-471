@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1 style="margin-left: 500px">CPSC 471 Project Login </h1>
+	<form name="471project_login">
+	<br><br><br><br><br><br><br>
+	 <fieldset>
+	 <legend>Personal information:</legend>
+        <label style="margin-left: 570px" for="usermail">Username:</label><br>
+        <input style="margin-left: 570px" type="usermail" name="usermail" required><br><br>
+        
+        <label style="margin-left: 570px" for="password">Password:</label><br>
+        <input style="margin-left: 570px" type="password" name="password" required><br><br>
+        <input style="margin-left: 620px" type="submit" value='Login' onsubmit = "check(this.form)"
+        onclick = "check(this.form)">
+	 </fieldset>
+	</form>	
+	<script>
+            function check(form){ 
+                if((form.usermail.value == "simple_user") && (form.password.value == "471user")) {
+                    window.open('simple_user.html')
+                }
+                else if((form.usermail.value == "trusted_user") && (form.password.value == "471tuser")) {
+                    window.open('trusted_user.html')
+                }
+                else if((form.usermail.value == "admin") && (form.password.value == "471admin")){
+                	window.open('admin_mainpage.html')
+                }
+                else {
+                    alert("Error Password or Username")/*displays error message*/
+                }
+            }
+        </script>
+</body>
+</html>

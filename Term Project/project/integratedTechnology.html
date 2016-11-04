@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Integrated Technology</title>
+</head>
+<body>
+	<h1 style="margin-left: 500px">Retrieve Integrated Technology Information</h1>
+	<hr>
+	<form name ="form1" action="integratedTechnology.php" method="post">
+	<h3>1) Search by Integrated Technology ID</h3>
+	
+	IT - Key: <input type="text" name="itprimary" id="itkey" oninput="feKeyOff()"/><br>
+	
+	<input type="checkbox" name="temperature" id="temperatureid">
+	Temperature<br>
+	
+	<input type="checkbox" name="pressure" id="pressureid">
+	Pressure<br>
+	
+	<input type="checkbox" name="flow" id="flowid">
+	Flow<br>
+	<br>
+	<h3>2) Search All Integrated Technologies by Flow Element ID</h3>
+	
+	FE - Key: <input type="text" name="feprimary" id="fekey" oninput="itKeyOff()"/><br>
+	
+	<h3>3) Search Integrated Technologies by Date and Time</h3>
+	<br>
+	IT - Key: <input type="text" name="new2" id="newkey" oninput="feItOff()"/><br><br>
+	All Times:
+	<input type="checkbox" name="alltimes" onchange="changeFields()"><br><br>
+	Start Date:
+	<input type="date" name="startdate" id="startdate">
+	Start Time:
+	<input type="time" name="starttime" id="starttime"><br><br>
+	Same Time:
+	<input type="checkbox" name="sametime" id = "sametime" onchange="sameFields()"><br><br> 
+	End Date:
+	<input type="date" name="enddate" id="enddate">
+	End Time:
+	<input type="time" name="endtime" id="endtime"><br><br>
+	
+	<input type="submit">
+	
+	</form>
+	<script>
+		function feKeyOff(){
+			
+			if(document.getElementById("fekey").disabled == false && document.getElementById("itkey").value != '' ){
+				document.getElementById("fekey").disabled = true;
+				document.getElementById("newkey").disabled = true;	
+
+				
+			}
+			if(document.getElementById("fekey").disabled == true  && document.getElementById("itkey").value == '' ){
+				document.getElementById("fekey").disabled = false;
+				document.getElementById("newkey").disabled = false;	
+			}
+		}
+		function itKeyOff(){
+			if(document.getElementById("itkey").disabled == false  && document.getElementById("fekey").value != '' && document.getElementById("temperatureid").disabled == false && document.getElementById("pressureid").disabled == false && document.getElementById("flowid").disabled == false){
+				document.getElementById("itkey").disabled = true;
+				document.getElementById("newkey").disabled = true;
+				document.getElementById("temperatureid").disabled = true;
+				document.getElementById("pressureid").disabled = true;
+				document.getElementById("flowid").disabled = true;	
+			}
+			if(document.getElementById("itkey").disabled == true  && document.getElementById("fekey").value == ''&& document.getElementById("temperatureid").disabled == true && document.getElementById("pressureid").disabled == true && document.getElementById("flowid").disabled == true){
+				document.getElementById("itkey").disabled = false;
+				document.getElementById("newkey").disabled = false;	
+				document.getElementById("temperatureid").disabled = false;
+				document.getElementById("pressureid").disabled = false;
+				document.getElementById("flowid").disabled = false;
+			}	
+			
+		}
+		
+		function feItOff(){
+			if(document.getElementById("itkey").disabled == false && document.getElementById("fekey").disabled == false  && (document.getElementById("itkey").value != '') ){
+				document.getElementById("itkey").disabled = true;
+				document.getElementById("fekey").disabled = true;
+				
+			}
+			
+			if(document.getElementById("itkey").disabled == true && document.getElementById("fekey").disabled == true && (document.getElementById("itkey").value == '') ){
+				document.getElementById("itkey").disabled = false;
+				document.getElementById("fekey").disabled = false;
+				
+			}
+		}
+		
+		function changeFields() {
+		
+			if(document.getElementById("startdate").disabled == false){
+				document.getElementById("startdate").disabled = true;
+				document.getElementById("starttime").disabled = true;
+				document.getElementById("enddate").disabled = true;
+				document.getElementById("endtime").disabled = true;
+				document.getElementById("sametime").disabled = true;
+				if(document.getElementById("sametime").checked = true){
+					document.getElementById("sametime").checked = false;
+					}
+				document.getElementById("startdate").value = null;
+				document.getElementById("starttime").value = null;
+				document.getElementById("enddate").value = null;
+				document.getElementById("endtime").value = null;
+			}
+			else{
+				document.getElementById("startdate").disabled = false;
+				document.getElementById("starttime").disabled = false;
+				document.getElementById("enddate").disabled = false;
+				document.getElementById("endtime").disabled = false;
+				document.getElementById("sametime").disabled = false;
+			}
+			
+		}
+		function sameFields() {
+			if(document.getElementById("enddate").disabled == false){
+				document.getElementById("enddate").disabled = true;
+				document.getElementById("endtime").disabled = true;
+				document.getElementById("enddate").value = null;
+				document.getElementById("endtime").value = null;
+			}
+			else{
+				document.getElementById("enddate").disabled = false;
+				document.getElementById("endtime").disabled = false;
+			}
+		}
+	</script>
+</body>
+</html>

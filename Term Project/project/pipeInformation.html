@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pipe Information</title>
+</head>
+<body>
+	<h1 style="margin-left: 500px">Retrieve Pipe Information</h1>
+	<hr>
+	<form name ="form1" action="pipeInformation.php" method="post">
+	<h3>1) Search by Pipe Key</h3>
+	
+	Pipe Key: <input type="text" name="pipeprimary" id="pipekey" oninput="subKeyOff()"/><br>
+	
+	<input type="checkbox" name="pipelocation" id="pipeLocation">
+	Location<br>
+	
+	<input type="checkbox" name="Pipe-Type" id="pipetype">
+	Pipe-Type<br>
+	
+	<input type="checkbox" name="product" id="product">
+	Product<br>
+	<br>
+	<h3>2) Search by Diameter of Pipe</h3>
+	Diameter of Pipe:<input type="text" name="pipediameter" id="pipediam" oninput="diamOff()"/>
+	<br>
+	<h3>3) Search by Length of Pipe</h3>
+	Length of Pipe:<input type="text" name="pipelength" id="pipelen" oninput="lenOff()"/>
+	<br>
+	<h3>4) Search Subsection of Pipe</h3>
+	Sub-Section Key: <input type="text" name="subsectionid" id="subkey" oninput="pipeKeyOff()"/><br>
+	
+	
+	<input type="submit">
+	
+	</form>
+	<script>
+		function pipeKeyOff() {
+			if(document.getElementById("pipekey").disabled == false  && document.getElementById("subkey").value != '' ){
+				document.getElementById("pipekey").disabled = true;
+			}
+			if(document.getElementById("pipekey").disabled == true  && document.getElementById("subkey").value == '' ){
+				document.getElementById("pipekey").disabled = false;
+			}		
+		}
+		function subKeyOff() {
+			if(document.getElementById("subkey").disabled == false  && document.getElementById("pipekey").value != '' ){
+				document.getElementById("subkey").disabled = true;
+			}
+			if(document.getElementById("subkey").disabled == true  && document.getElementById("pipekey").value == '' ){
+				document.getElementById("subkey").disabled = false;
+			}		
+		}
+		function diamOff() {
+			if(document.getElementById("subkey").disabled == false && document.getElementById("pipekey").disabled == false
+				&& document.getElementById("pipelen").disabled == false && document.getElementById("pipediam").value != ''){
+					document.getElementById("subkey").disabled = true;
+					document.getElementById("pipekey").disabled = true;
+					document.getElementById("pipelen").disabled = true;
+			}
+			if(document.getElementById("subkey").disabled == true && document.getElementById("pipekey").disabled == true
+				&& document.getElementById("pipelen").disabled == true && document.getElementById("pipediam").value == ''){
+					document.getElementById("subkey").disabled = false;
+					document.getElementById("pipekey").disabled = false;
+					document.getElementById("pipelen").disabled = false;
+			}
+				
+		}
+		function lenOff() {
+			if(document.getElementById("subkey").disabled == false && document.getElementById("pipekey").disabled == false
+				&& document.getElementById("pipediam").disabled == false && document.getElementById("pipelen").value != ''){
+					document.getElementById("subkey").disabled = true;
+					document.getElementById("pipekey").disabled = true;
+					document.getElementById("pipediam").disabled = true;
+					
+			}
+			if(document.getElementById("subkey").disabled == true && document.getElementById("pipekey").disabled == true
+				&& document.getElementById("pipediam").disabled == true && document.getElementById("pipelen").value == ''){
+					document.getElementById("subkey").disabled = false;
+					document.getElementById("pipekey").disabled = false;
+					document.getElementById("pipediam").disabled = false;
+			}
+		}
+		
+	</script>
+</body>
+</html>
